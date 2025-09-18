@@ -7,4 +7,6 @@ internal data class AppDraftRequest(
     val whatsNew: String,
     @SerializedName("publishType")
     val publishType: String,
+    @SerializedName("seoTagIds")
+    val seoTags: List<Int>
 )

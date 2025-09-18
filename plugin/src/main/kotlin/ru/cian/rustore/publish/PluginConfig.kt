@@ -13,6 +13,7 @@ internal data class PluginConfig(
     val releasePhase: ReleasePhaseConfig?,
     val releaseNotes: List<ReleaseNotesConfig>?,
     val applicationId: String,
+    val seoTags: List<SeoTag>,
 )
 
 internal data class ReleasePhaseConfig(
