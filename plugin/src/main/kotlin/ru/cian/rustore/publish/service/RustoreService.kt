@@ -1,5 +1,6 @@
 package ru.cian.rustore.publish.service
 
+import ru.cian.rustore.publish.SeoTag
 import java.io.File
 
 /**
@@ -19,6 +20,7 @@ internal interface RustoreService {
         applicationId: String,
         whatsNew: String,
         publishType: String,
+        seoTags: List<Int>
     ): Int
 
     @Suppress("LongParameterList")

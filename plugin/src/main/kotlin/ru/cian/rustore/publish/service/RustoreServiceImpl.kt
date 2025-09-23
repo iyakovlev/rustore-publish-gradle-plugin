@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import ru.cian.rustore.publish.SeoTag
 import ru.cian.rustore.publish.models.request.AccessTokenRustoreRequest
 import ru.cian.rustore.publish.models.request.AppDraftRequest
 import ru.cian.rustore.publish.models.response.AccessTokenResponse
@@ -62,10 +63,12 @@ internal class RustoreServiceImpl(
         applicationId: String,
         whatsNew: String,
         publishType: String,
+        seoTags: List<Int>,
     ): Int {
         val bodyRequest = AppDraftRequest(
             whatsNew = whatsNew,
             publishType = publishType,
+            seoTags = seoTags
         )
 
         logger.i("""
@@ -75,7 +78,8 @@ internal class RustoreServiceImpl(
             --header 'Public-Token: $token' \
             --data-raw '{
                 "whatsNew": "$whatsNew",
-                "publishType": "$publishType"
+                "publishType": "$publishType",
+                "seoTags": [${seoTags.joinToString()}]
             }'            
         """.trimIndent())
 
@@ -115,6 +119,7 @@ internal class RustoreServiceImpl(
                 applicationId = applicationId,
                 whatsNew = whatsNew,
                 publishType = publishType,
+                seoTags = seoTags
             )
         }
 

@@ -11,6 +11,9 @@ rustorePublish {
             mobileServicesType = ru.cian.rustore.publish.MobileServicesType.HMS
             buildFormat = ru.cian.rustore.publish.BuildFormat.AAB
             requestTimeout = 60
+            seoTags = listOf(
+                ru.cian.rustore.publish.SeoTag.LIFESTYLE
+            )
             releaseNotes = listOf(
                 ru.cian.rustore.publish.ReleaseNote(
                     lang = "ru-RU",
