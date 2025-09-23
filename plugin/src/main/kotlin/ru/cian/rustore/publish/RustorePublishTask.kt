@@ -36,7 +36,7 @@ open class RustorePublishTask
         description = "Upload and publish application build file " +
             "to RuStore for ${variant.name} buildType"
     }
-    
+
     private val logger by lazy { Logger(project) }
 
     @get:Internal
@@ -129,6 +129,13 @@ open class RustorePublishTask
     @set:Option(option = "apiStub", description = "Use RestAPI stub instead of real RestAPI requests")
     var apiStub: Boolean? = false
 
+    @get:Internal
+    @set:Option(
+        option = "seoTagIds",
+        description = "List of release SEO tags. Number of tags should not be greater than 5."
+    )
+    var seoTags: List<SeoTag>? = null
+
     @Suppress("LongMethod")
     @TaskAction
     fun action() {
@@ -212,6 +219,7 @@ open class RustorePublishTask
             applicationId = config.applicationId,
             whatsNew = config.releaseNotes?.first()?.newFeatures ?: "",
             publishType = config.publishType.name,
+            seoTags = config.seoTags.take(5).map { it.id }
         )
 
         logger.v("5/6. Upload build file '${config.artifactFile}'")
@@ -262,6 +270,7 @@ open class RustorePublishTask
     }
 
     companion object {
+
         const val TASK_NAME = "publishRustore"
     }
 }

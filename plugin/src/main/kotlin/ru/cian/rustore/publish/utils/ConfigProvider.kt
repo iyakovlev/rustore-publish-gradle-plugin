@@ -7,6 +7,7 @@ import ru.cian.rustore.publish.PluginConfig
 import ru.cian.rustore.publish.ReleaseNotesConfig
 import ru.cian.rustore.publish.ReleasePhaseConfig
 import ru.cian.rustore.publish.RustorePublishExtensionConfig
+import ru.cian.rustore.publish.SeoTag
 import java.io.File
 import java.io.FileNotFoundException
 
@@ -29,6 +30,7 @@ internal class ConfigProvider(
         val releasePhase = getReleasePhaseConfig()
         val credentialsConfig = getCredentialsConfig()
         val releaseNotes = getReleaseNotesConfig()
+        val seoTags: List<SeoTag> = cli.seoTags ?: extension.seoTags
 
         val artifactFile = getBuildFile(customBuildFilePath, artifactFormat)
 
@@ -53,6 +55,7 @@ internal class ConfigProvider(
             releasePhase = releasePhase,
             releaseNotes = releaseNotes,
             applicationId = applicationId,
+            seoTags = seoTags
         )
     }
 
@@ -179,6 +182,7 @@ internal class ConfigProvider(
     }
 
     companion object {
+
         private const val RELEASE_NOTES_MAX_LENGTH = 500
     }
 }
