@@ -24,6 +24,7 @@ import ru.cian.rustore.publish.ReleaseNotesConfig
 import ru.cian.rustore.publish.ReleasePhaseConfig
 import ru.cian.rustore.publish.ReleasePhaseExtension
 import ru.cian.rustore.publish.RustorePublishExtensionConfig
+import ru.cian.rustore.publish.SeoTag
 import ru.cian.rustore.publish.models.Credential
 import java.io.File
 
@@ -143,6 +144,7 @@ internal class ConfigProviderTest {
             releasePhase = null,
             releaseNotes = null,
             applicationId = applicationId,
+            seoTags = emptyList(),
         )
 
         every {
@@ -193,6 +195,10 @@ internal class ConfigProviderTest {
             ),
             releaseNotes = null,
             applicationId = applicationId,
+            seoTags = listOf(
+                SeoTag.AMERICAN_FOOTBALL,
+                SeoTag.BLOGS,
+            )
         )
 
         val inputExtensionConfig = extensionConfigInstance().apply {
@@ -205,6 +211,10 @@ internal class ConfigProviderTest {
             releasePhase = ReleasePhaseExtension().apply {
                 percent = 99.7
             }
+            seoTags = listOf(
+                SeoTag.ROMANTIC,
+                SeoTag.LIFESTYLE,
+            )
         }
         val inputCliConfig = RustorePublishCli(
             publishType = PublishType.MANUAL,
@@ -216,6 +226,10 @@ internal class ConfigProviderTest {
             buildFile = ARTIFACT_AAB_FILE_SECOND_PATH,
             releaseTime = "2019-10-18T21:00:00+0300",
             releasePhasePercent = "10.05",
+            seoTags = listOf(
+                SeoTag.AMERICAN_FOOTBALL,
+                SeoTag.BLOGS,
+            )
         )
         val configProvider = ConfigProvider(
             extension = inputExtensionConfig,
@@ -245,6 +259,7 @@ internal class ConfigProviderTest {
             releasePhase = null,
             releaseNotes = null,
             applicationId = applicationId,
+            seoTags = emptyList(),
         )
 
         tableOf("expectedValue", "actualValue")
@@ -343,6 +358,7 @@ internal class ConfigProviderTest {
             releasePhase = null,
             releaseNotes = null,
             applicationId = applicationId,
+            seoTags = emptyList(),
         )
         val langRu = "lang_ru_RU"
         val releaseNotesRu = "Some release notes for ru_RU"

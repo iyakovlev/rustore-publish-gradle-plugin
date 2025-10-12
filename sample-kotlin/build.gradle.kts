@@ -12,7 +12,8 @@ rustorePublish {
             buildFormat = ru.cian.rustore.publish.BuildFormat.AAB
             requestTimeout = 60
             seoTags = listOf(
-                ru.cian.rustore.publish.SeoTag.LIFESTYLE
+                ru.cian.rustore.publish.SeoTag.LIFESTYLE,
+                ru.cian.rustore.publish.SeoTag.ROMANTIC,
             )
             releaseNotes = listOf(
                 ru.cian.rustore.publish.ReleaseNote(

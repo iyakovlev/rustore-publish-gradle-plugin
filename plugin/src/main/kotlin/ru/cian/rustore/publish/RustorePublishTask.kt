@@ -125,16 +125,19 @@ open class RustorePublishTask
     )
     var publishType: PublishType? = null
 
+    @SuppressWarnings("MaxLineLength")
+    @get:Internal
+    @set:Option(
+        option = "seoTags",
+        description = "List of release SEO tags from ru.cian.rustore.publish.SeoTag. " +
+            "Number of tags should not be greater than 5. " +
+            "For more details see documentation: https://www.rustore.ru/help/work-with-rustore-api/api-upload-publication-app/app-tag-list"
+    )
+    var seoTags: String? = null
+
     @get:Internal
     @set:Option(option = "apiStub", description = "Use RestAPI stub instead of real RestAPI requests")
     var apiStub: Boolean? = false
-
-    @get:Internal
-    @set:Option(
-        option = "seoTagIds",
-        description = "List of release SEO tags. Number of tags should not be greater than 5."
-    )
-    var seoTags: List<SeoTag>? = null
 
     @Suppress("LongMethod")
     @TaskAction
@@ -166,6 +169,7 @@ open class RustorePublishTask
             releaseTime = releaseTime,
             releasePhasePercent = releasePhasePercent,
             releaseNotes = releaseNotes,
+            seoTags = seoTags?.split(",")?.map { SeoTag.valueOf(it.trim()) }.orEmpty(),
             apiStub = apiStub,
         )
 

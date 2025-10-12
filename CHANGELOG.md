@@ -1,3 +1,24 @@
+# 0.5.2
+
+##### Add
+* [issue#22](https://github.com/cianru/rustore-publish-gradle-plugin/issues/22) Support of `seoTags` param to control [SEO tags list](https://www.rustore.ru/help/work-with-rustore-api/api-upload-publication-app/app-tag-list).
+```kotlin
+  /**
+   * (Optional)
+   * List of available SEO tags for RuStore app listing.
+   * For more details see documentation: https://www.rustore.ru/help/work-with-rustore-api/api-upload-publication-app/app-tag-list
+   * Number of tags should not be greater than 5.
+   * Default value: []
+   * CLI: `--seoTags`. For example: `--seoTags=LIFESTYLE,ROMANTIC`
+   * Gradle Extension DSL, available values from ru.cian.rustore.publish.SeoTag
+   */
+  seoTags = listOf(
+     ru.cian.rustore.publish.SeoTag.LIFESTYLE,
+     ru.cian.rustore.publish.SeoTag.ROMANTIC,
+  )  
+```
+Thanks to @iyakovlev for PR #22
+
 # 0.5.1
 
 ##### Add

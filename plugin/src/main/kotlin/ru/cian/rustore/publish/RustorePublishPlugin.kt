@@ -38,12 +38,14 @@ class RustorePublishPlugin : Plugin<Project> {
         variant: ApplicationVariant,
         rustorePublishExtension: RustorePublishExtension,
     ) {
-        val variantName = variant.name.capitalize()
-        val publishTaskName = "${RustorePublishTask.TASK_NAME}$variantName"
-        val publishTask = project.tasks.register<RustorePublishTask>(publishTaskName, variant)
         val extension = rustorePublishExtension.instances.find { it.name.equals(variant.name, ignoreCase = true) }
+        if (extension != null) {
+            val variantName = variant.name.capitalize()
+            val publishTaskName = "${RustorePublishTask.TASK_NAME}$variantName"
+            val publishTask = project.tasks.register<RustorePublishTask>(publishTaskName, variant)
 
-        scheduleTasksOrder(publishTask, project, variantName)
+            scheduleTasksOrder(publishTask, project, variantName)
+        }
     }
 
     private fun scheduleTasksOrder(
