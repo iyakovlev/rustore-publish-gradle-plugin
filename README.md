@@ -206,7 +206,22 @@ rustorePublish {
        * CLI: `--requestTimeout`
        */
       requestTimeout = 300
-      
+
+
+      /**
+       * (Optional)
+       * List of available SEO tags for RuStore app listing.
+       * For more details see documentation: https://www.rustore.ru/help/work-with-rustore-api/api-upload-publication-app/app-tag-list
+       * Number of tags should not be greater than 5.
+       * Default value: []
+       * CLI: `--seoTags`. For example: `--seoTags=LIFESTYLE,ROMANTIC`
+       * Gradle Extension DSL, available values from ru.cian.rustore.publish.SeoTag
+       */
+      seoTags = listOf(
+         ru.cian.rustore.publish.SeoTag.LIFESTYLE,
+         ru.cian.rustore.publish.SeoTag.ROMANTIC,
+      )  
+        
       /**
        * (Optional)
        * Type of mobile services used in application.
@@ -283,6 +298,10 @@ rustorePublish {
             buildFormat = "apk"
             buildFile = "$rootDir/app/build/outputs/apk/release/app-release.apk"
             requestTimeout = 60 // 1min
+            seoTags = [
+                ru.cian.rustore.publish.SeoTag.LIFESTYLE,
+                ru.cian.rustore.publish.SeoTag.ROMANTIC,
+            ]
             mobileServicesType = "Unknown"
             releaseNotes = [
                 new ru.cian.rustore.publish.ReleaseNote(
@@ -347,6 +366,7 @@ CLI params are more priority than gradle configuration params.
     --buildFormat=apk \
     --buildFile="/sample-kotlin/app/build/outputs/apk/release/app-release.apk" \
     --requestTimeout=300 \ # 5min
+    --seoTags=LIFESTYLE,ROMANTIC \
     --mobileServicesType="Unknown" \
     --releaseNotes="ru_RU:/home/<USERNAME>/str/project/release_notes_ru.txt"
 ```

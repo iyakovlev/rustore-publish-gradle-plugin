@@ -6,14 +6,7 @@
     ```
 1. Edit the `gradle.properties` file:
    Remove `-alpha<number>` from the `VERSION_NAME` and set the version to the release version. For example: `1.0.0`.
-1. Verify that the everything works:
-   ```bash
-   ./gradlew clean check
-   ```
-1. Verify that the code style is correct:
-   ```bash
-   ./gradlew detekt
-   ``` 
+1. Verify that the everything works, see [how to do the checks](03-publish-checks.md):
 1. Upload binaries to Gradle's plugin portal:
    ```bash
    ./gradlew :plugin:publishPlugins

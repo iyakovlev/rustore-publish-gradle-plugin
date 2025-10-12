@@ -2,8 +2,6 @@ package ru.cian.rustore.publish
 
 import groovy.lang.Closure
 import org.gradle.api.Project
-import org.gradle.api.tasks.Input
-import org.gradle.api.provider.Property
 
 open class RustorePublishExtension(
     project: Project
@@ -137,6 +135,7 @@ class RustorePublishExtensionConfig(
             "publishType='$publishType', " +
             "requestTimeout='$requestTimeout', " +
             "mobileServicesType='$mobileServicesType', " +
+            "seoTags='$seoTags', " +
             "buildFormat='$buildFormat', " +
             "buildFile='$buildFile', " +
             "releaseTime='$releaseTime', " +
@@ -210,6 +209,10 @@ enum class PublishType {
 //    DELAYED, // FIXME: Implement delayed publication after adding of `publishDateTime` API param;
 }
 
+/**
+ * List of available SEO tags for RuStore app listing.
+ * For more details see documentation: https://www.rustore.ru/help/work-with-rustore-api/api-upload-publication-app/app-tag-list
+ */
 enum class SeoTag(val id: Int) {
     X4(1),
     AUTOMOBILES(2),

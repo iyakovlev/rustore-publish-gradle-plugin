@@ -55,7 +55,7 @@ internal class ConfigProvider(
             releasePhase = releasePhase,
             releaseNotes = releaseNotes,
             applicationId = applicationId,
-            seoTags = seoTags
+            seoTags = seoTags,
         )
     }
 

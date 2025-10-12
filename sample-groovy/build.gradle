@@ -21,6 +21,10 @@ rustorePublish {
             credentialsPath = "$projectDir/rustore-credentials-2.json"
             buildFormat = "apk"
             requestTimeout = 120
+            seoTags = [
+                ru.cian.rustore.publish.SeoTag.LIFESTYLE,
+                ru.cian.rustore.publish.SeoTag.ROMANTIC,
+            ]
             releaseNotes = [
                 new ru.cian.rustore.publish.ReleaseNote(
                     "ru-RU",

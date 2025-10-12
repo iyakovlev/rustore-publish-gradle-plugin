@@ -1,6 +1,5 @@
 package ru.cian.rustore.publish.service
 
-import ru.cian.rustore.publish.SeoTag
 import java.io.File
 
 /**
@@ -15,6 +14,7 @@ internal interface RustoreService {
         signature: String,
     ): String
 
+    @Suppress("LongParameterList")
     fun createDraft(
         token: String,
         applicationId: String,
